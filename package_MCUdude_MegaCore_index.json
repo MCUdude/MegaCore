@@ -1021,8 +1021,8 @@
           "category": "Contributed",
           "url": "https://MCUdude.github.io/MegaCore/MegaCore-3.0.0.tar.bz2",
           "archiveFileName": "MegaCore-3.0.0.tar.bz2",
-          "checksum": "SHA-256:3878460f4fb0162949971c0fa6ca5ecde338f2353d11fe4908c822fb6f143ab5",
-          "size": "2554423",
+          "checksum": "SHA-256:6379db0e718e91c818a2fc5fec99bbe43ec4620fcffc9d2fcde390a30c104764",
+          "size": "2549002",
           "boards": [
             {
               "name": "ATmega6490"
