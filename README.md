@@ -180,44 +180,31 @@ For more information on how it works and how you can use this in your own applic
 
 
 ## PROGMEM with flash sizes greater than 64kB
-The usual `PROGMEM` attribute stores constant data such as string arrays to flash and is great if you want to preserve the precious RAM. However, PROGMEM will only store content in the lower section, from 0 and up to 64kB. If you want to store data in other sections, you can use `PROGMEM1` (64 - 128kB), `PROGMEM2` (128 - 192kB), or `PROGMEM3` (192 - 256kB), depending on the chip you're using.
-Accessing this data is not as straightforward as with `PROGMEM`, but it's still doable:
+The  `PROGMEM` attribute stores constant data, such as string arrays, in flash and is great if you want to preserve the precious RAM. However, the usual PROGMEM library macros can access data only in the lower part of flash memory up to 64kiB.  If you store more data in the PROGMEM section, you will get a warning during the compilation process because some of the PROGMEM data will not be accessible in the usual way.
+
+If you want to store and access data independently from the 64kiB limit, use `PROGMEM_FAR` from the "progmem_far" library (which is bundled with MegaCore). Data with that attribute is stored at the far end of flash memory. Accessing this data is not as straightforward as with `PROGMEM`, but it's still doable:
 
 ```cpp
-const char far_away[] PROGMEM1 = "Hello from far away!\n"; // (64  - 128kB)
-const char far_far_away[] PROGMEM2 = "Hello from far, far away!\n"; // (128 - 192kB)
-const char far_far_far_away[] PROGMEM3 = "Hello from far, far, far away!\n"; // (192 - 256kB)
+#include <progmem_far.h>
+
+const char far_away[] PROGMEM_FAR = "Hello from far away!\n"; 
 
 void print_progmem()
 {
-  uint8_t i;
   char c;
 
   // Print out far_away
-  for(i = 0; i < sizeof(far_away); i++)
+  for(uint8_t i = 0; i < sizeof(far_away); i++)
   {
     c = pgm_read_byte_far(pgm_get_far_address(far_away) + i);
-    Serial.write(c);
-  }
-
-  // Print out far_far_away
-  for(i = 0; i < sizeof(far_far_away); i++)
-  {
-    c = pgm_read_byte_far(pgm_get_far_address(far_far_away) + i);
-    Serial.write(c);
-  }
-  // Print out far_far_far_away
-  for(i = 0; i < sizeof(far_far_far_away); i++)
-  {
-    c = pgm_read_byte_far(pgm_get_far_address(far_far_far_away) + i);
     Serial.write(c);
   }
 }
 
 ```
 
-
 ## Programmers
+
 Select your microcontroller in the boards menu, then select the clock frequency. You'll have to hit "Burn bootloader" in order to set the correct fuses and upload the correct bootloader. <br/>
 Make sure you connect an ISP programmer, and select the correct one in the "Programmers" menu. For time-critical operations, an external oscillator is recommended.
 
