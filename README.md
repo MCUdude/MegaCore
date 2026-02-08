@@ -2,7 +2,9 @@
 [![MegaCore forum thread](https://img.shields.io/badge/support-forum-blue.svg)](https://forum.arduino.cc/index.php?topic=386733.0)
 
 An Arduino core for most 64 and 100-pin AVRs, all running the [Urboot](#write-to-own-flash) bootloader.
-This core requires at least Arduino IDE v1.8, where v1.8.9 or newer is recommended. IDE 2.x should also work.
+This core requires at least Arduino IDE v1.8, where v1.8.9 or newer is recommended. IDE 2.x.y works as well.
+
+*From version 3.1.0 onwards, debugging in the Arduino IDE 2 is supported. You can use any of Microchip's EDBG-based hardware debuggers. For documentation, see [https://pyavrocd.io](https://pyavrocd.io).*
 
 *From MegaCore version 3 and onwards, the Optiboot bootloader has been replaced by the superior [Urboot bootloader](https://github.com/stefanrueger/urboot/). It's smaller, faster, and has automatic baud rate detection, and can read and write to EEPROM. Other cool features the bootloader provides but are not utilized by MegaCore are user program metadata stored in flash (that can easily be viewed by Avrdude -xshowall) and chip-erase functionality.
 If you already have Optiboot installed and don't want to replace it with Urboot, you can still upload programs without any compatibility issues. However, if you're burning a bootloader to a new chip, Urboot is the way to go.*
