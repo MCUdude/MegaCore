@@ -1,5 +1,5 @@
 #!/bin/bash
-
+ 
 ##########################################################
 ##                                                      ##
 ## Shell script for generating a boards manager release ##
@@ -9,13 +9,37 @@
 ##########################################################
 
 # Change these to match your repo
-AUTHOR=MCUdude       # Github username
-REPOSITORY=MegaCore  # Github repo name
+REALAUTHOR=MCUdude   # Author name for file
+AUTHOR=MCUdude       # GitHub Owner (usually the same as above)
+REPOSITORY=MegaCore # Github repo name
+PAOOWNER=felias-fogg # Github owner of PyAvrOCD  
+
+# Get the version number of most recent PyAvrOCD version
+PAOVERSION=$(curl -s https://api.github.com/repos/$PAOOWNER/PyAvrOCD/releases/latest | grep "tag_name" |  awk -F\" '{print $4}')
+AVROCDVERSION=${PAOVERSION#"v"}
 
 AVRDUDE_VERSION="8.0-arduino.1"
 
 # Get the download URL for the latest release from Github
 DOWNLOAD_URL=$(curl -s https://api.github.com/repos/$AUTHOR/$REPOSITORY/releases/latest | grep "tarball_url" | awk -F\" '{print $4}')
+
+# Get filename
+DOWNLOADED_FILE=$(echo $DOWNLOAD_URL | awk -F/ '{print $8}')
+
+# Check whether most recent board file is already in the index
+if grep -q ${REPOSITORY}-${DOWNLOADED_FILE#"v"} package_${REALAUTHOR}_${REPOSITORY}_index.json; then
+    echo "Most recent board version is already in the index file. Nothing to do."
+    exit 1
+fi
+
+# Check whether already part of the index
+if grep -q "avrocd-tools-"${AVROCDVERSION} package_${REALAUTHOR}_${REPOSITORY}_index.json; then
+    echo "Current PyAvrOCD version is in index. Continue ..."
+else
+    echo "Current PyAvrOCD version is not in index. Add it first."
+    exit 1
+fi
+
 
 # Download file
 wget --no-verbose $DOWNLOAD_URL
@@ -37,6 +61,9 @@ mv $REPOSITORY-${DOWNLOADED_FILE#"v"}/avr/* $REPOSITORY-${DOWNLOADED_FILE#"v"}
 # Delete downloaded file and empty avr folder
 rm -rf ${DOWNLOADED_FILE}.tar.bz2 $REPOSITORY-${DOWNLOADED_FILE#"v"}/avr
 
+# Make sure there are no macOS related files added to the arching that's soon to be geneated
+dot_clean .
+
 # Compress folder to tar.bz2
 printf "\nCompressing folder $REPOSITORY-${DOWNLOADED_FILE#"v"} to $REPOSITORY-${DOWNLOADED_FILE#"v"}.tar.bz2\n"
 tar -cjSf $REPOSITORY-${DOWNLOADED_FILE#"v"}.tar.bz2 $REPOSITORY-${DOWNLOADED_FILE#"v"}
@@ -51,7 +78,7 @@ SHA256="SHA-256:$(shasum -a 256 "$REPOSITORY-${DOWNLOADED_FILE#"v"}.tar.bz2" | a
 # Create Github download URL
 URL="https://${AUTHOR}.github.io/${REPOSITORY}/$REPOSITORY-${DOWNLOADED_FILE#"v"}.tar.bz2"
 
-cp "package_${AUTHOR}_${REPOSITORY}_index.json" "package_${AUTHOR}_${REPOSITORY}_index.json.tmp"
+cp "package_${REALAUTHOR}_${REPOSITORY}_index.json" "package_${REALAUTHOR}_${REPOSITORY}_index.json.tmp"
 
 # Add new boards release entry
 jq -r                                    \
@@ -61,6 +88,7 @@ jq -r                                    \
 --arg checksum    $SHA256                \
 --arg file_size   $FILE_SIZE             \
 --arg avrdude_ver $AVRDUDE_VERSION       \
+--arg avrocdversion $AVROCDVERSION       \
 --arg file_name   $REPOSITORY-${DOWNLOADED_FILE#"v"}.tar.bz2  \
 '.packages[].platforms[.packages[].platforms | length] |= . +
 {
@@ -94,7 +122,7 @@ jq -r                                    \
     {"name": "AT90CAN64"},
     {"name": "AT90CAN32"}
   ],
-  "toolsDependencies": [
+    "toolsDependencies": [
     {
       "packager": "arduino",
       "name": "avr-gcc",
@@ -109,9 +137,15 @@ jq -r                                    \
       "packager": "arduino",
       "name": "arduinoOTA",
       "version": "1.3.0"
-    }
+    },
+    {
+      "packager": "MegaCore",
+      "name": "avrocd-tools",
+      "version": $avrocdversion
+    }   
+
   ]
-}' "package_${AUTHOR}_${REPOSITORY}_index.json.tmp" > "package_${AUTHOR}_${REPOSITORY}_index.json"
+}' "package_${REALAUTHOR}_${REPOSITORY}_index.json.tmp" > "package_${REALAUTHOR}_${REPOSITORY}_index.json"
 
 # Remove files that's no longer needed
-rm -rf "$REPOSITORY-${DOWNLOADED_FILE#"v"}" "package_${AUTHOR}_${REPOSITORY}_index.json.tmp"
+rm -rf "$REPOSITORY-${DOWNLOADED_FILE#"v"}" "package_${REALAUTHOR}_${REPOSITORY}_index.json.tmp"
