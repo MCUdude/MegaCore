@@ -16,6 +16,7 @@ menu.variant=Variant
 menu.pinout=Pinout
 menu.bootloader=Bootloader
 menu.baudrate=Baud rate
+menu.JTAG=JTAG pins
 
 #####################
 #### ATmega2561  ####
@@ -34,6 +35,12 @@ menu.baudrate=Baud rate
 2561.build.mcu=atmega2561
 2561.build.bootloader_led=led+b5
 2561.build.extra_flags={build.clkpr}
+
+# JTAG pins
+2561.menu.JTAG.disabled=JTAG disabled
+2561.menu.JTAG.disabled.bootloader.jtag_nibble=d
+2561.menu.JTAG.enabled=JTAG enabled
+2561.menu.JTAG.enabled.bootloader.jtag_nibble=9
 
 # Upload port select
 2561.menu.bootloader.uart0=Yes (UART0)
@@ -57,9 +64,9 @@ menu.baudrate=Baud rate
 
 # EEPROM
 2561.menu.eeprom.keep=EEPROM retained
-2561.menu.eeprom.keep.bootloader.high_fuses=0xd7
+2561.menu.eeprom.keep.bootloader.high_fuses=0x{bootloader.jtag_nibble}7
 2561.menu.eeprom.erase=EEPROM not retained
-2561.menu.eeprom.erase.bootloader.high_fuses=0xdf
+2561.menu.eeprom.erase.bootloader.high_fuses=0x{bootloader.jtag_nibble}f
 
 # Baud rate
 2561.menu.baudrate.default=Default
@@ -245,6 +252,12 @@ menu.baudrate=Baud rate
 2560.build.bootloader_led=led+b7
 2560.build.extra_flags={build.clkpr}
 
+# JTAG pins
+2560.menu.JTAG.disabled=JTAG disabled
+2560.menu.JTAG.disabled.bootloader.jtag_nibble=d
+2560.menu.JTAG.enabled=JTAG enabled
+2560.menu.JTAG.enabled.bootloader.jtag_nibble=9
+
 # Upload port select
 2560.menu.bootloader.uart0=Yes (UART0)
 2560.menu.bootloader.uart0.upload.maximum_size=261632
@@ -281,9 +294,9 @@ menu.baudrate=Baud rate
 
 # EEPROM
 2560.menu.eeprom.keep=EEPROM retained
-2560.menu.eeprom.keep.bootloader.high_fuses=0xd7
+2560.menu.eeprom.keep.bootloader.high_fuses=0x{bootloader.jtag_nibble}7
 2560.menu.eeprom.erase=EEPROM not retained
-2560.menu.eeprom.erase.bootloader.high_fuses=0xdf
+2560.menu.eeprom.erase.bootloader.high_fuses=0x{bootloader.jtag_nibble}f
 
 # Baud rate
 2560.menu.baudrate.default=Default
@@ -515,6 +528,12 @@ menu.baudrate=Baud rate
 1281.build.bootloader_led=led+b5
 1281.build.extra_flags={build.clkpr}
 
+# JTAG pins
+1281.menu.JTAG.disabled=JTAG disabled
+1281.menu.JTAG.disabled.bootloader.jtag_nibble=d
+1281.menu.JTAG.enabled=JTAG enabled
+1281.menu.JTAG.enabled.bootloader.jtag_nibble=9
+
 # Upload port select
 1281.menu.bootloader.uart0=Yes (UART0)
 1281.menu.bootloader.uart0.upload.maximum_size=130560
@@ -537,9 +556,9 @@ menu.baudrate=Baud rate
 
 # EEPROM
 1281.menu.eeprom.keep=EEPROM retained
-1281.menu.eeprom.keep.bootloader.high_fuses=0xd7
+1281.menu.eeprom.keep.bootloader.high_fuses=0x{bootloader.jtag_nibble}7
 1281.menu.eeprom.erase=EEPROM not retained
-1281.menu.eeprom.erase.bootloader.high_fuses=0xdf
+1281.menu.eeprom.erase.bootloader.high_fuses=0x{bootloader.jtag_nibble}f
 
 # Baud rate
 1281.menu.baudrate.default=Default
@@ -726,6 +745,11 @@ menu.baudrate=Baud rate
 1280.build.bootloader_led=led+b7
 1280.build.extra_flags={build.clkpr}
 
+# JTAG pins
+1280.menu.JTAG.disabled=JTAG disabled
+1280.menu.JTAG.disabled.bootloader.jtag_nibble=d
+1280.menu.JTAG.enabled=JTAG enabled
+1280.menu.JTAG.enabled.bootloader.jtag_nibble=9
 
 # Upload port select
 1280.menu.bootloader.uart0=Yes (UART0)
@@ -763,9 +787,9 @@ menu.baudrate=Baud rate
 
 # EEPROM
 1280.menu.eeprom.keep=EEPROM retained
-1280.menu.eeprom.keep.bootloader.high_fuses=0xd7
+1280.menu.eeprom.keep.bootloader.high_fuses=0x{bootloader.jtag_nibble}7
 1280.menu.eeprom.erase=EEPROM not retained
-1280.menu.eeprom.erase.bootloader.high_fuses=0xdf
+1280.menu.eeprom.erase.bootloader.high_fuses=0x{bootloader.jtag_nibble}f
 
 # Baud rate
 1280.menu.baudrate.default=Default
@@ -994,6 +1018,12 @@ menu.baudrate=Baud rate
 649.build.board=AVR_ATmega649
 649.build.extra_flags={build.clkpr}
 
+# JTAG pins
+649.menu.JTAG.disabled=JTAG disabled
+649.menu.JTAG.disabled.bootloader.jtag_nibble=d
+649.menu.JTAG.enabled=JTAG enabled
+649.menu.JTAG.enabled.bootloader.jtag_nibble=9
+
 # Upload port select
 649.menu.bootloader.uart0=Yes (UART0)
 649.menu.bootloader.uart0.upload.maximum_size=65024
@@ -1009,9 +1039,9 @@ menu.baudrate=Baud rate
 
 # EEPROM
 649.menu.eeprom.keep=EEPROM retained
-649.menu.eeprom.keep.bootloader.high_fuses=0xd7
+649.menu.eeprom.keep.bootloader.high_fuses=0x{bootloader.jtag_nibble}7
 649.menu.eeprom.erase=EEPROM not retained
-649.menu.eeprom.erase.bootloader.high_fuses=0xdf
+649.menu.eeprom.erase.bootloader.high_fuses=0x{bootloader.jtag_nibble}f
 
 # Baud rate
 649.menu.baudrate.default=Default
@@ -1221,6 +1251,12 @@ menu.baudrate=Baud rate
 645.build.board=AVR_ATmega645
 645.build.extra_flags={build.clkpr}
 
+# JTAG pins
+645.menu.JTAG.disabled=JTAG disabled
+645.menu.JTAG.disabled.bootloader.jtag_nibble=d
+645.menu.JTAG.enabled=JTAG enabled
+645.menu.JTAG.enabled.bootloader.jtag_nibble=9
+
 # Upload port select
 645.menu.bootloader.uart0=Yes (UART0)
 645.menu.bootloader.uart0.upload.maximum_size=65024
@@ -1236,9 +1272,9 @@ menu.baudrate=Baud rate
 
 # EEPROM
 645.menu.eeprom.keep=EEPROM retained
-645.menu.eeprom.keep.bootloader.high_fuses=0xd7
+645.menu.eeprom.keep.bootloader.high_fuses=0x{bootloader.jtag_nibble}7
 645.menu.eeprom.erase=EEPROM not retained
-645.menu.eeprom.erase.bootloader.high_fuses=0xdf
+645.menu.eeprom.erase.bootloader.high_fuses=0x{bootloader.jtag_nibble}f
 
 # Baud rate
 645.menu.baudrate.default=Default
@@ -1450,6 +1486,12 @@ menu.baudrate=Baud rate
 640.build.bootloader_led=led+b7
 640.build.extra_flags={build.clkpr}
 
+# JTAG pins
+640.menu.JTAG.disabled=JTAG disabled
+640.menu.JTAG.disabled.bootloader.jtag_nibble=d
+640.menu.JTAG.enabled=JTAG enabled
+640.menu.JTAG.enabled.bootloader.jtag_nibble=9
+
 # Upload port select
 640.menu.bootloader.uart0=Yes (UART0)
 640.menu.bootloader.uart0.upload.maximum_size=65024
@@ -1486,9 +1528,9 @@ menu.baudrate=Baud rate
 
 # EEPROM
 640.menu.eeprom.keep=EEPROM retained
-640.menu.eeprom.keep.bootloader.high_fuses=0xd7
+640.menu.eeprom.keep.bootloader.high_fuses=0x{bootloader.jtag_nibble}7
 640.menu.eeprom.erase=EEPROM not retained
-640.menu.eeprom.erase.bootloader.high_fuses=0xdf
+640.menu.eeprom.erase.bootloader.high_fuses=0x{bootloader.jtag_nibble}f
 
 # Baud rate
 640.menu.baudrate.default=Default
@@ -1717,6 +1759,12 @@ menu.baudrate=Baud rate
 329.build.board=AVR_ATmega329
 329.build.extra_flags={build.clkpr}
 
+# JTAG pins
+329.menu.JTAG.disabled=JTAG disabled
+329.menu.JTAG.disabled.bootloader.jtag_nibble=d
+329.menu.JTAG.enabled=JTAG enabled
+329.menu.JTAG.enabled.bootloader.jtag_nibble=9
+
 # Upload port select
 329.menu.bootloader.uart0=Yes (UART0)
 329.menu.bootloader.uart0.upload.maximum_size=32384
@@ -1732,9 +1780,9 @@ menu.baudrate=Baud rate
 
 # EEPROM
 329.menu.eeprom.keep=EEPROM retained
-329.menu.eeprom.keep.bootloader.high_fuses=0xd7
+329.menu.eeprom.keep.bootloader.high_fuses=0x{bootloader.jtag_nibble}7
 329.menu.eeprom.erase=EEPROM not retained
-329.menu.eeprom.erase.bootloader.high_fuses=0xdf
+329.menu.eeprom.erase.bootloader.high_fuses=0x{bootloader.jtag_nibble}f
 
 # Baud rate
 329.menu.baudrate.default=Default
@@ -1944,6 +1992,12 @@ menu.baudrate=Baud rate
 325.build.board=AVR_ATmega325
 325.build.extra_flags={build.clkpr}
 
+# JTAG pins
+325.menu.JTAG.disabled=JTAG disabled
+325.menu.JTAG.disabled.bootloader.jtag_nibble=d
+325.menu.JTAG.enabled=JTAG enabled
+325.menu.JTAG.enabled.bootloader.jtag_nibble=9
+
 # Upload port select
 325.menu.bootloader.uart0=Yes (UART0)
 325.menu.bootloader.uart0.upload.maximum_size=32384
@@ -1959,9 +2013,9 @@ menu.baudrate=Baud rate
 
 # EEPROM
 325.menu.eeprom.keep=EEPROM retained
-325.menu.eeprom.keep.bootloader.high_fuses=0xd7
+325.menu.eeprom.keep.bootloader.high_fuses=0x{bootloader.jtag_nibble}7
 325.menu.eeprom.erase=EEPROM not retained
-325.menu.eeprom.erase.bootloader.high_fuses=0xdf
+325.menu.eeprom.erase.bootloader.high_fuses=0x{bootloader.jtag_nibble}f
 
 # Baud rate
 325.menu.baudrate.default=Default
@@ -2173,6 +2227,12 @@ menu.baudrate=Baud rate
 169.build.bootloader_led=led+b5
 169.build.extra_flags={build.clkpr}
 
+# JTAG pins
+169.menu.JTAG.disabled=JTAG disabled
+169.menu.JTAG.disabled.bootloader.jtag_nibble=d
+169.menu.JTAG.enabled=JTAG enabled
+169.menu.JTAG.enabled.bootloader.jtag_nibble=9
+
 # Upload port select
 169.menu.bootloader.uart0=Yes (UART0)
 169.menu.bootloader.uart0.upload.maximum_size=16000
@@ -2188,9 +2248,9 @@ menu.baudrate=Baud rate
 
 # EEPROM
 169.menu.eeprom.keep=EEPROM retained
-169.menu.eeprom.keep.bootloader.high_fuses=0xd7
+169.menu.eeprom.keep.bootloader.high_fuses=0x{bootloader.jtag_nibble}7
 169.menu.eeprom.erase=EEPROM not retained
-169.menu.eeprom.erase.bootloader.high_fuses=0xdf
+169.menu.eeprom.erase.bootloader.high_fuses=0x{bootloader.jtag_nibble}f
 
 # Baud rate
 169.menu.baudrate.default=Default
@@ -2383,6 +2443,12 @@ menu.baudrate=Baud rate
 165.build.bootloader_led=led+b5
 165.build.extra_flags={build.clkpr}
 
+# JTAG pins
+165.menu.JTAG.disabled=JTAG disabled
+165.menu.JTAG.disabled.bootloader.jtag_nibble=d
+165.menu.JTAG.enabled=JTAG enabled
+165.menu.JTAG.enabled.bootloader.jtag_nibble=9
+
 # Upload port select
 165.menu.bootloader.uart0=Yes (UART0)
 165.menu.bootloader.uart0.upload.maximum_size=16000
@@ -2398,9 +2464,9 @@ menu.baudrate=Baud rate
 
 # EEPROM
 165.menu.eeprom.keep=EEPROM retained
-165.menu.eeprom.keep.bootloader.high_fuses=0xd7
+165.menu.eeprom.keep.bootloader.high_fuses=0x{bootloader.jtag_nibble}7
 165.menu.eeprom.erase=EEPROM not retained
-165.menu.eeprom.erase.bootloader.high_fuses=0xdf
+165.menu.eeprom.erase.bootloader.high_fuses=0x{bootloader.jtag_nibble}f
 
 # Baud rate
 165.menu.baudrate.default=Default
@@ -2588,13 +2654,19 @@ menu.baudrate=Baud rate
 128.bootloader.unlock_bits=0xff
 128.bootloader.lock_bits=0xff
 128.bootloader.low_fuses=0b{bootloader.bod_bits}{bootloader.sut_cksel_bits}
-128.bootloader.high_fuses=0b110{bootloader.ckopt_bit}{bootloader.eesave_bit}111
+128.bootloader.high_fuses=0b1{bootloader.jtag_bit}0{bootloader.ckopt_bit}{bootloader.eesave_bit}111
 128.bootloader.extended_fuses=0xff
 128.build.core=MCUdude_corefiles
 128.build.variant=64-pin-avr
 128.build.board=AVR_ATmega128
 128.build.mcu=atmega128
 128.build.bootloader_led=led+b5
+
+# JTAG pins
+128.menu.JTAG.disabled=JTAG disabled
+128.menu.JTAG.disabled.bootloader.jtag_bit=1
+128.menu.JTAG.enabled=JTAG enabled
+128.menu.JTAG.enabled.bootloader.jtag_bit=0
 
 # Upload port select
 128.menu.bootloader.uart0=Yes (UART0)
@@ -2800,13 +2872,19 @@ menu.baudrate=Baud rate
 64.bootloader.unlock_bits=0xff
 64.bootloader.lock_bits=0xff
 64.bootloader.low_fuses=0b{bootloader.bod_bits}{bootloader.sut_cksel_bits}
-64.bootloader.high_fuses=0b110{bootloader.ckopt_bit}{bootloader.eesave_bit}111
+64.bootloader.high_fuses=0b1{bootloader.jtag_bit}0{bootloader.ckopt_bit}{bootloader.eesave_bit}111
 64.bootloader.extended_fuses=0xff
 64.build.core=MCUdude_corefiles
 64.build.variant=64-pin-avr
 64.build.board=AVR_ATmega64
 64.build.mcu=atmega64
 64.build.bootloader_led=led+b5
+
+# JTAG pins
+64.menu.JTAG.disabled=JTAG disabled
+64.menu.JTAG.disabled.bootloader.jtag_bit=1
+64.menu.JTAG.enabled=JTAG enabled
+64.menu.JTAG.enabled.bootloader.jtag_bit=0
 
 # Upload port select
 64.menu.bootloader.uart0=Yes (UART0)
@@ -3018,6 +3096,12 @@ can128.build.mcu=at90can128
 can128.build.bootloader_led=led+b5
 can128.build.extra_flags={build.clkpr}
 
+# JTAG pins
+can128.menu.JTAG.disabled=JTAG disabled
+can128.menu.JTAG.disabled.bootloader.jtag_nibble=d
+can128.menu.JTAG.enabled=JTAG enabled
+can128.menu.JTAG.enabled.bootloader.jtag_nibble=9
+
 # Upload port select
 can128.menu.bootloader.uart0=Yes (UART0)
 can128.menu.bootloader.uart0.upload.maximum_size=130560
@@ -3040,9 +3124,9 @@ can128.menu.bootloader.no_bootloader.bootloader.file=empty/empty.hex
 
 # EEPROM
 can128.menu.eeprom.keep=EEPROM retained
-can128.menu.eeprom.keep.bootloader.high_fuses=0xd7
+can128.menu.eeprom.keep.bootloader.high_fuses=0x{bootloader.jtag_nibble}7
 can128.menu.eeprom.erase=EEPROM not retained
-can128.menu.eeprom.erase.bootloader.high_fuses=0xdf
+can128.menu.eeprom.erase.bootloader.high_fuses=0x{bootloader.jtag_nibble}f
 
 # Baud rate
 can128.menu.baudrate.default=Default
@@ -3238,6 +3322,12 @@ can64.build.mcu=at90can64
 can64.build.bootloader_led=led+b5
 can64.build.extra_flags={build.clkpr}
 
+# JTAG pins
+can64.menu.JTAG.disabled=JTAG disabled
+can64.menu.JTAG.disabled.bootloader.jtag_nibble=d
+can64.menu.JTAG.enabled=JTAG enabled
+can64.menu.JTAG.enabled.bootloader.jtag_nibble=9
+
 # Upload port select
 can64.menu.bootloader.uart0=Yes (UART0)
 can64.menu.bootloader.uart0.upload.maximum_size=65024
@@ -3260,9 +3350,9 @@ can64.menu.bootloader.no_bootloader.bootloader.file=empty/empty.hex
 
 # EEPROM
 can64.menu.eeprom.keep=EEPROM retained
-can64.menu.eeprom.keep.bootloader.high_fuses=0xd7
+can64.menu.eeprom.keep.bootloader.high_fuses=0x{bootloader.jtag_nibble}7
 can64.menu.eeprom.erase=EEPROM not retained
-can64.menu.eeprom.erase.bootloader.high_fuses=0xdf
+can64.menu.eeprom.erase.bootloader.high_fuses=0x{bootloader.jtag_nibble}f
 
 # Baud rate
 can64.menu.baudrate.default=Default
@@ -3446,6 +3536,12 @@ can32.build.mcu=at90can32
 can32.build.bootloader_led=led+b5
 can32.build.extra_flags={build.clkpr}
 
+# JTAG pins
+can32.menu.JTAG.disabled=JTAG disabled
+can32.menu.JTAG.disabled.bootloader.jtag_nibble=d
+can32.menu.JTAG.enabled=JTAG enabled
+can32.menu.JTAG.enabled.bootloader.jtag_nibble=9
+
 # Upload port select
 can32.menu.bootloader.uart0=Yes (UART0)
 can32.menu.bootloader.uart0.upload.maximum_size=32256
@@ -3468,9 +3564,9 @@ can32.menu.bootloader.no_bootloader.bootloader.file=empty/empty.hex
 
 # EEPROM
 can32.menu.eeprom.keep=EEPROM retained
-can32.menu.eeprom.keep.bootloader.high_fuses=0xd7
+can32.menu.eeprom.keep.bootloader.high_fuses=0x{bootloader.jtag_nibble}7
 can32.menu.eeprom.erase=EEPROM not retained
-can32.menu.eeprom.erase.bootloader.high_fuses=0xdf
+can32.menu.eeprom.erase.bootloader.high_fuses=0x{bootloader.jtag_nibble}f
 
 # Baud rate
 can32.menu.baudrate.default=Default
