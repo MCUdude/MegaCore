@@ -2,9 +2,9 @@
 [![MegaCore forum thread](https://img.shields.io/badge/support-forum-blue.svg)](https://forum.arduino.cc/index.php?topic=386733.0)
 
 An Arduino core for most 64 and 100-pin AVRs, all running the [Urboot](#write-to-own-flash) bootloader.
-MightyCore works with flawless with Arduino IDE 1.8.x, but if you want to debug using a hardware debugger, you'll need Arduino IDE 2.x.
 
 *From version 3.1.0 onwards, debugging in the Arduino IDE 2 is supported. You can use any of Microchip's EDBG-based hardware debuggers. For documentation, see [https://pyavrocd.io](https://pyavrocd.io).*
+MegaCore works with flawless with Arduino IDE 1.8.x, but if you want to debug using a hardware debugger, you'll need Arduino IDE 2.x.
 
 *From MegaCore version 3 and onwards, the Optiboot bootloader has been replaced by the superior [Urboot bootloader](https://github.com/stefanrueger/urboot/). It's smaller, faster, and has automatic baud rate detection, and can read and write to EEPROM. Other cool features the bootloader provides but are not utilized by MegaCore are user program metadata stored in flash (that can easily be viewed by Avrdude -xshowall) and chip-erase functionality.
 If you already have Optiboot installed and don't want to replace it with Urboot, you can still upload programs without any compatibility issues. However, if you're burning a bootloader to a new chip, Urboot is the way to go.*
@@ -278,7 +278,7 @@ MegaCore provides a standard, logical pinout for the 64-pin chips. The standard 
 
 | ATmega64/128/1281/2561<br/>AT90CAN32/CAN64/CAN128      | ATmega165/169/325/329/645/649                           |
 |--------------------------------------------------------|---------------------------------------------------------|
-|<img src="https://i.imgur.com/sweRJs3.jpg" width="280"> | <img src="https://i.imgur.com/YJ3ojm1.png" width="280"> |
+|<img src="avr/images/MegaCore_standard_pinout_64_128_1281_2561.jpg" width="280"> | <img src="avr/images/MegaCore_standard_pinout_165_169_325_329_645_649.png" width="280"> |
 
 ### 100-pin chips
 MegaCore provides a standard, logical pinout for the 64-pin chips. The standard LED pin is assigned to digital pin 13/PIN_PB5.
@@ -288,7 +288,7 @@ The standard LED pin is assigned to digital pin 13 on the Arduino MEGA pinout an
 
 | ATmega640/1280/2560<br/>Arduino MEGA pinout             | ATmega640/1280/2560<br/>"AVR" pinout                   | ATmega3250/3290/6450/6490                               |
 |---------------------------------------------------------|--------------------------------------------------------|---------------------------------------------------------|
-| <img src="https://i.imgur.com/O7WtWAj.jpg" width="240"> | <img src="http://i.imgur.com/DfR7arD.jpg" width="240"> | <img src="https://i.imgur.com/F80M5u1.jpg" width="240"> |
+| <img src="avr/images/MegaCore_mega_pinout_640_1280_2560.jpg" width="240"> | <img src="avr/images/MegaCore_avr_pinout_640_1280_2560.jpg" width="240"> | <img src="avr/images/MegaCore_avr_pinout_3250_3290_6450_6490.jpg" width="240"> |
 
 
 ## Minimal setup
@@ -297,5 +297,5 @@ Here are some simple schematics showing a minimal setup using an external crysta
 
 | ATmega64/128/1281/2561<br/>AT90CAN32/CAN64/CAN128      | ATmega165/325/645<br/>ATmega169/329/649                 | ATmega640/1280/2560                                    | ATmega3250/6450<br/>ATmega3290/6490                    |
 |--------------------------------------------------------|---------------------------------------------------------|--------------------------------------------------------|--------------------------------------------------------|
-|<img src="https://i.imgur.com/UlGwP45.png" width="200"> | <img src="https://i.imgur.com/d5Otnpj.png" width="200"> | <img src="http://i.imgur.com/gQS1ORv.png" width="200"> |<img src="https://i.imgur.com/jdPptok.png" width="200"> |
+|<img src="avr/images/Minimal_setup_MegaCore_TQFP64_64_128_1281_2561.png" width="200"> | <img src="avr/images/Minimal_setup_MegaCore_TQFP64_165_169_325_329_645_649.png" width="200"> | <img src="avr/images/Minimal_setup_MegaCore_TQFP100_640_1280_2560.png" width="200"> |<img src="avr/images/Minimal_setup_MegaCore_TQFP100_3250_3290_6450_6490.png" width="200"> |
 
